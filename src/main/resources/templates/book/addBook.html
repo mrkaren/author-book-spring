@@ -7,7 +7,7 @@
 <body>
 Add Book
 
-<form action="/books/add" method="post">
+<form action="/books/add" method="post" enctype="multipart/form-data">
     title: <input type="text" name="title"/> <br>
     price: <input type="number" name="price"/> <br>
     qty: <input type="number" name="qty"/> <br>
@@ -17,6 +17,7 @@ Add Book
             th:text="${author.name + ' ' + author.surname}">
     </option>
 </select><br>
+    image: <input type="file" name="image">
     <input type="submit" value="Add">
 </form>
 </body>

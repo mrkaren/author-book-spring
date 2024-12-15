@@ -36,5 +36,6 @@ public class Book {
     @ManyToOne
     private Author author;
 
+    private String imageName;
 
 }

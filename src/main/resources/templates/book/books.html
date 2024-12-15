@@ -10,6 +10,7 @@ Books page
 <table>
     <tr>
         <th>id</th>
+        <th>image</th>
         <th>title</th>
         <th>price</th>
         <th>qty</th>
@@ -21,6 +22,7 @@ Books page
 
     <tr th:each="book : ${books}">
         <td th:text="${book.getId()}"></td>
+        <td><img th:if="${book.imageName != null}" th:src="@{/getImage(imageName=${book.imageName})}" width="100"></td>
         <td th:text="${book.getTitle()}"></td>
         <td th:text="${book.getPrice()}"></td>
         <td th:text="${book.getQty()}"></td>
