@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-Hello from Spring <br>
-
+<div th:if="${user != null}"> Hello <span th:text="${user.name}"></span> <a href="/logout">Logout</a> </div><br>
+<div th:if="${user == null}">Welcome guest</div>
 <a href="/books">Books</a> <br>
 <a href="/authors">Authors</a>
+<a href="/users/register">Register</a>
 </body>
 </html>
