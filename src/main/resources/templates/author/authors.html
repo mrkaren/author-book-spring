@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Authors</title>
+
 </head>
 <body>
 Authors Page | <a href="/authors/add">Add</a>
@@ -28,5 +29,8 @@ Authors Page | <a href="/authors/add">Add</a>
     <td> <a th:href="@{/authors/edit(id=${author.id})}">Edit</a> | <a th:href="@{/authors/delete(id=${author.id})}">Delete</a> </td>
   </tr>
 </table>
+
+<th:block th:include="fragment/my-fragments::footer"></th:block>
+
 </body>
 </html>

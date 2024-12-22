@@ -32,5 +32,7 @@ Books page
         <td> <a th:href="@{/books/edit(id=${book.id})}">Edit</a> | <a th:href="@{/books/delete(id=${book.id})}">Delete</a> </td>
     </tr>
 </table>
+<th:block th:include="fragment/my-fragments::footer"></th:block>
+
 </body>
 </html>
