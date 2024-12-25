@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 public class DateUtil {
 
 
-    @PostConstruct
-    public void postConstruct() {
-        System.out.println("hello");
-    }
+//    @PostConstruct
+//    public void postConstruct() {
+//        System.out.println("hello");
+//    }
 
 
     @PreDestroy

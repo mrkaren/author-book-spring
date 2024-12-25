@@ -49,7 +49,7 @@ public class SpringSecurityConfig {
                 .formLogin()
                 .loginPage("/loginPage")
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/loginSuccess")
+                .defaultSuccessUrl("/loginSuccess", true)
                 .and()
                 .logout()
                 .logoutSuccessUrl("/")

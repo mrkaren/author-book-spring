@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <th:block th:include="fragment/my-fragments::header"></th:block>
+
 </head>
 <body>
-Login Page
+<th:block th:include="fragment/my-fragments::language"></th:block>
+
+<span>Login Page</span>
 <form action="/login" method="post">
   <input type="text" name="username" placeholder="username"><br>
   <input type="password" name="password" placeholder="password"><br>
