@@ -4,13 +4,10 @@ import am.itspace.authorbook.entity.UserType;
 import am.itspace.authorbook.service.security.CurrentUser;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,7 +27,7 @@ public class MainController {
 
     @GetMapping("/")
     public String mainPage(Locale locale) {
-        log.info("Main Page was opened, locale {}", locale.getLanguage());
+        log.debug("Main Page was opened, locale {}", locale.getLanguage());
         return "index";
     }
 
@@ -45,7 +42,7 @@ public class MainController {
     @GetMapping("/loginSuccess")
     public String loginSuccess(@AuthenticationPrincipal CurrentUser currentUser) {
         if (currentUser != null && currentUser.getUser() != null) {
-            log.info("user with {} email logged in", currentUser.getUser().getEmail() );
+            log.info("user with {} email logged in", currentUser.getUser().getEmail());
             if (currentUser.getUser().getUserType() == UserType.ADMIN) {
                 return "redirect:/admin";
             }

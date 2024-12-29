@@ -3,8 +3,12 @@ package am.itspace.authorbook.service.impl;
 import am.itspace.authorbook.entity.Author;
 import am.itspace.authorbook.repository.AuthorRepository;
 import am.itspace.authorbook.service.AuthorService;
+import am.itspace.authorbook.specification.AuthorSpecification;
+import am.itspace.authorbook.specification.SearchCriteria;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,6 +27,11 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
+    public Page<Author> findAll(Pageable pageable) {
+        return authorRepository.findAll(pageable);
+    }
+
+    @Override
     public Author save(Author author) {
         return authorRepository.save(author);
     }
@@ -37,5 +46,17 @@ public class AuthorServiceImpl implements AuthorService {
         return authorRepository
                 .findById(id)
                 .orElse(null);
+    }
+
+    @Override
+    public List<Author> search(String keyword) {
+        return authorRepository.findAllByNameContainingOrSurnameContaining(keyword, keyword);
+    }
+
+    @Override
+    public List<Author> filter(SearchCriteria searchCriteria) {
+        AuthorSpecification authorSpecification = new AuthorSpecification(searchCriteria);
+        List<Author> result = authorRepository.findAll(authorSpecification);
+        return result;
     }
 }

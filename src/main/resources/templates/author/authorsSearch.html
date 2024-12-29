@@ -3,21 +3,19 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Authors</title>
+    <title>Search Result</title>
 
 </head>
 <body>
-Authors Page | <a href="/authors/add">Add</a>
-<br>
 Search: <form action="/authors/search" method="get">
   <input type="text" name="keyword">
-  <input type="submit" value="search">
+  <input type="submit" name="search">
 </form>
-Filter:
+
 <form action="/authors/filter" method="get">
-  name: <input type="text" name="name">
-  surname: <input type="text" name="surname"> <br>
-  phone: <input type="text" name="phone">
+  name: <input type="text" name="name" th:value="${name}">
+  surname: <input type="text" name="surname" th:value="${surname}"> <br>
+  phone: <input type="text" name="phone" th:value="${phone}">
   gender: <select name="gender">
   <option value="">-</option>
   <option value="MALE">MALE</option>
@@ -36,7 +34,7 @@ Filter:
     <th>action</th>
   </tr>
 
-  <tr th:each="author : ${authors.content}">
+  <tr th:each="author : ${authors}">
     <td th:text="${author.getId()}"></td>
     <td th:text="${author.getName()}"></td>
     <td th:text="${author.getSurname()}"></td>
@@ -46,13 +44,6 @@ Filter:
     <td> <a th:href="@{/authors/edit(id=${author.id})}">Edit</a> | <a th:href="@{/authors/delete(id=${author.id})}">Delete</a> </td>
   </tr>
 </table>
-
-<div th:if="${authors.totalPages > 0}" class="pagination"
-     th:each="pageNumber : ${pageNumbers}">
-  <a th:href="@{/authors(pageSize=${authors.size}, pageNumber=${pageNumber})}"
-     th:text="${pageNumber}"
-     th:class="${pageNumber==authors.number + 1} ? active"></a>
-</div>
   <br>
 
 <th:block th:include="fragment/my-fragments::footer"></th:block>
